@@ -1,6 +1,7 @@
+#!/usr/bin/env python
 import gmpy2
 p = 3487583947589437589237958723892346254777
 q = 8767867843568934765983476584376578389
 e = 65537
-phin = (p - 1) * (q - 1)
-print gmpy2.invert(e, phin)
+r = (p - 1) * (q - 1)
+print 'flag:', gmpy2.invert(e, r)

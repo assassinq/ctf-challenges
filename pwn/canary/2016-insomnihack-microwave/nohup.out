@@ -1,0 +1,21 @@
+./link.sh: line 2: 10869 Segmentation fault      (core dumped) LD_PRELOAD=./libc.so.6 ./microwave
+./link.sh: line 2: 10987 Segmentation fault      (core dumped) LD_PRELOAD=./libc.so.6 ./microwave
+./link.sh: line 2: 11050 Segmentation fault      (core dumped) LD_PRELOAD=./libc.so.6 ./microwave
+2019/02/16 19:42:35 socat[11515] E bind(5, {AF=2 0.0.0.0:1337}, 16): Address already in use
+2019/02/16 19:42:49 socat[11629] E write(6, 0x1f13410, 10): Broken pipe
+./link.sh: line 2: 11869 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 12057 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 12193 Illegal instruction     (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 12323 Illegal instruction     (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 13618 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 13750 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 13821 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 13949 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 14806 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 15118 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 16383 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 16690 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 16820 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+./link.sh: line 2: 16953 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
+2019/02/16 21:52:14 socat[17084] E write(6, 0x1f13410, 8192): Broken pipe
+./link.sh: line 2: 18343 Segmentation fault      (core dumped) LD_LIBRARY_PATH=./libc.so.6 ./microwave
