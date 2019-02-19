@@ -2,8 +2,8 @@
 from pwn import *
 context.arch = 'i386'
 context.log_level = 'debug'
-p = process('./ex2')
-elf = ELF('./ex2')
+p = process('./example')
+elf = ELF('./example')
 getshell = elf.symbols["getshell"]
 log.success('getshell = ' + hex(getshell))
 # Leak Canary
